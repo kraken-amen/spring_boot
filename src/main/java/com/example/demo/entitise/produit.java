@@ -38,4 +38,12 @@ public String getNomproduit() {
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
+	public produit(String nomproduit, Double prixProduit, java.util.Date date) {
+		super();
+		this.nomproduit = nomproduit;
+		this.prixProduit = prixProduit;
+		this.dateCreation = (Date) date;
+	}
+	
+	
 }
