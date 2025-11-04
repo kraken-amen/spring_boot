@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class produit {
 	@Id
@@ -20,7 +22,7 @@ public class produit {
 		return "produit [idproduct=" + idproduct + ", nomproduit=" + nomproduit + ", prixProduit=" + prixProduit
 				+ ", dateCreation=" + dateCreation + "]";
 	}
-public String getNomproduit() {
+	public String getNomproduit() {
 		return nomproduit;
 	}
 	public void setNomproduit(String nomproduit) {
@@ -38,12 +40,18 @@ public String getNomproduit() {
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	public produit(String nomproduit, Double prixProduit, java.util.Date date) {
+	public produit() {
+		
+	}
+	public produit(String nomproduit, Double prixProduit, java.sql.Date date) {
 		super();
 		this.nomproduit = nomproduit;
 		this.prixProduit = prixProduit;
 		this.dateCreation = (Date) date;
 	}
-	
+	@ManyToOne
+	@JoinColumn(name="catégorie-id")
+	private Catégorie catégorie;
+	@ManytoMany(@joincolumns(name))
 	
 }
